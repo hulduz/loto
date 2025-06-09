@@ -22,8 +22,6 @@ def load_data():
         return pd.DataFrame()
 
 df = load_data()
-
-st.write("Données chargées:", df.shape)
 if df.empty:
     st.warning("Le dataframe est vide. Vérifie le fichier CSV ou le chemin.")
     st.stop()

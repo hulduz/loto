@@ -8,7 +8,7 @@ st.set_page_config(page_title="EuroMillions Predictor", layout="centered")
 
 st.title("Pronostics EuroMillions")
 
-# 1. Charger les données
+# Charger les données 
 @st.cache_data
 def load_data():
     try:
@@ -40,8 +40,12 @@ all_etoiles = pd.concat([df[col] for col in etoiles_cols], axis=0)
 frequencies_etoiles = Counter(all_etoiles)
 top_etoiles = [num for num, _ in frequencies_etoiles.most_common()]
 
-st.write("Top 10 boules principales les plus fréquentes:", top_boules[:10])
-st.write("Top 5 étoiles les plus fréquentes:", top_etoiles[:5])
+top10_boules = top_boules[:10]
+top10_etoiles = top_etoiles[:5]
+st.markdown("### 🎯 Top 10 des boules principales les plus fréquentes :")
+st.markdown(" ".join([f"`{b}`" for b in top10_boules]))
+st.markdown("### ⭐ Top 5 des étoiles les plus fréquentes :")
+st.markdown(" ".join([f"`{e}`" for e in top10_etoiles]))
 
 # 3. Méthodes de génération avec protection
 def generate_numbers(method='frequent'):
